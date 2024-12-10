@@ -38,7 +38,7 @@ public class MusicPlayer
             setupPlayer(filename);
             player.play(500);
         }
-        catch(JavaLayerException e) {
+        catch(JavaLayerException ) {
             reportProblem(filename);
         }
         finally {

@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * A class to hold details of audio tracks.
@@ -75,9 +77,11 @@ public class MusicOrganizer
      */
     public void listTrack(int index)
     {
+        if (indexValid(index)) {
         System.out.print("Track " + index + ": ");
         Track track = tracks.get(index);
         System.out.println(track.getDetails());
+        }
     }
     
     /**
@@ -149,14 +153,14 @@ public class MusicOrganizer
         
         if(index < 0) {
             System.out.println("Index cannot be negative: " + index);
-            valid = false;
+            return valid = false;
         }
         else if(index >= tracks.size()) {
             System.out.println("Index is too large: " + index);
-            valid = false;
+            retrun valid = false;
         }
         else {
-            valid = true;
+            return valid = true;
         }
         return valid;
     }
@@ -170,4 +174,28 @@ public class MusicOrganizer
             addTrack(track);
         }
     }
-}
+    public void singleShuffle() {
+        int total = getNumberOfTracks();
+        if (total == 0) {
+            System.out.println("No tracks available to shuffle.");
+            return;
+        }
+    }
+    Random randomNumber = new Random();
+    List<Track> tempTracks = new ArrayList<>(tracks);
+    List<Track> shuffledTracks = new ArrayList<>();
+    
+    for (int i = 0; i < total; i++) {
+      int randomIndex = randomNumber.nextInt(tempTracks.size());
+      shuffledTracks.add(tempTracks.get(randomIndex));
+      tempTracks.remove(randomIndex);
+      
+    }
+    for (Track track: shuffledTrakcs) {
+        playTrack(tracks.indexOf(track));
+        
+    }
+    }
+
+    
+
